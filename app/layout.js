@@ -39,6 +39,7 @@ function LayoutContent({ children, pathname }) {
       <head>
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
         {/* Google Fonts */}
+        <title>King Smoke BBQ</title>
         <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
         {/* Square Web Payments SDK - Dynamically loads based on environment */}
@@ -72,7 +73,9 @@ function LayoutContent({ children, pathname }) {
         <div className="xs-sidebar-widget" onClick={(e) => e.stopPropagation()} style={{
           maxHeight: '100vh',
           overflowY: 'auto',
-          overflowX: 'hidden'
+          overflowX: 'hidden',
+          maxWidth: '500px',
+          width: '90vw'
         }}>
             <div className="sidebar-widget-container">
                 <div className="widget-heading">
@@ -214,22 +217,7 @@ function LayoutContent({ children, pathname }) {
                     </div>
                     <div className="top-right pull-right">
                         <ul className="menu-right-content pull-left clearfix">
-                            <li className="user-box"><a href="index.html"><i className="flaticon-user-symbol-of-thin-outline"></i></a></li>
-                            <li className="search-box-outer">
-                                <div className="dropdown">
-                                    <button className="search-box-btn" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="flaticon-search"></span></button>
-                                    <ul className="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                        <li className="panel-outer">
-                                            <div className="form-container">
-                                                <div className="form-group">
-                                                    <input type="search" name="field-name" value="" placeholder="Search...." required="" />
-                                                    <button type="submit" className="search-btn"><span className="fas fa-search"></span></button>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                          
 
                             <li className="cart-box">
                                 <a href="#" onClick={(e) => { e.preventDefault(); toggleCart(); }}>
@@ -387,6 +375,61 @@ function LayoutContent({ children, pathname }) {
             </div>
         </footer>
         {/* main-footer end */}
+
+        {/*Floating Cart Button*/}
+        <button
+          className="floating-cart-btn"
+          onClick={toggleCart}
+          style={{
+            position: 'fixed',
+            bottom: '90px',
+            right: '30px',
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            background: 'white',
+            border: '2px solid #f0f0f0',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 999,
+            transition: 'all 0.3s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(220, 20, 60, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+          }}
+        >
+          <span style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <i className="fas fa-shopping-cart" style={{ fontSize: '24px', color: '#dc143c' }}></i>
+            {cart.length > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-12px',
+                right: '-12px',
+                background: '#dc143c',
+                color: 'white',
+                borderRadius: '50%',
+                width: '20px',
+                height: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '11px',
+                fontWeight: 'bold',
+              }}>
+                {cart.length}
+              </span>
+            )}
+          </span>
+        </button>
+
         {/*Scroll to top*/}
         <button className="scroll-top scroll-to-target" data-target="html">
             <span className="fa fa-arrow-up"></span>
