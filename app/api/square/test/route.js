@@ -1,0 +1,13 @@
+import { NextResponse } from 'next/server';
+
+export async function GET(request) {
+  return NextResponse.json({
+    envLoaded: {
+      hasAccessToken: !!process.env.SQUARE_ACCESS_TOKEN,
+      hasAppId: !!process.env.SQUARE_APPLICATION_ID,
+      hasLocationId: !!process.env.SQUARE_LOCATION_ID,
+      environment: process.env.SQUARE_ENVIRONMENT || 'not set',
+      accessTokenLength: process.env.SQUARE_ACCESS_TOKEN?.length || 0
+    }
+  });
+}

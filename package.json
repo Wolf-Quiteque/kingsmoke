@@ -1,0 +1,17 @@
+{
+  "name": "kingsmoke",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "15.5.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "square": "^43.2.0",
+    "stripe": "^19.3.0"
+  }
+}
