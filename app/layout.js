@@ -437,7 +437,7 @@ function LayoutContent({ children, pathname }) {
         />
         <Script src="/js/jquery.js" strategy="beforeInteractive" />
         <Script src="/js/popper.min.js" strategy="beforeInteractive" />
-        <Script src="/js/bootstrap.min.js" strategy="lazyOnload" />
+        <Script src="/js/bootstrap.min.js" strategy="beforeInteractive" />
         <Script src="/js/owl.js" strategy="lazyOnload" />
         <Script src="/js/wow.js" strategy="lazyOnload" />
         <Script src="/js/validation.js" strategy="lazyOnload" />
@@ -447,7 +447,7 @@ function LayoutContent({ children, pathname }) {
         {/* nav-tool.js removed - conflicts with React cart sidebar */}
         {/* <Script src="/js/nav-tool.js" /> */}
         {/* main-js */}
-        <Script src="/js/script.js" strategy="lazyOnload" />
+        <Script src="/js/script.js" strategy="beforeInteractive" />
       </body>
     </html>
   );
