@@ -42,6 +42,13 @@ function LayoutContent({ children, pathname }) {
         <title>King Smoke BBQ</title>
         <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+        {/* Square Web Payments SDK - Dynamically loads based on environment */}
+        <script
+          type="text/javascript"
+          src={process.env.SQUARE_ENVIRONMENT === 'production'
+            ? "https://web.squarecdn.com/v1/square.js"
+            : "https://sandbox.web.squarecdn.com/v1/square.js"}
+        ></script>
         {/* Stylesheets */}
         <link href="/css/font-awesome-all.css" rel="stylesheet" />
         <link href="/css/flaticon.css" rel="stylesheet" />
@@ -428,26 +435,19 @@ function LayoutContent({ children, pathname }) {
             <span className="fa fa-arrow-up"></span>
         </button>
           </div>
-        {/* Square Web Payments SDK - Only loads when needed */}
-        <Script
-          src={process.env.SQUARE_ENVIRONMENT === 'production'
-            ? "https://web.squarecdn.com/v1/square.js"
-            : "https://sandbox.web.squarecdn.com/v1/square.js"}
-          strategy="lazyOnload"
-        />
-        <Script src="/js/jquery.js" strategy="beforeInteractive" />
-        <Script src="/js/popper.min.js" strategy="beforeInteractive" />
-        <Script src="/js/bootstrap.min.js" strategy="beforeInteractive" />
-        <Script src="/js/owl.js" strategy="lazyOnload" />
-        <Script src="/js/wow.js" strategy="lazyOnload" />
-        <Script src="/js/validation.js" strategy="lazyOnload" />
-        <Script src="/js/jquery.fancybox.js" strategy="lazyOnload" />
-        <Script src="/js/appear.js" strategy="lazyOnload" />
-        <Script src="/js/scrollbar.js" strategy="lazyOnload" />
+        <Script src="/js/jquery.js" />
+        <Script src="/js/popper.min.js" />
+        <Script src="/js/bootstrap.min.js" />
+        <Script src="/js/owl.js" />
+        <Script src="/js/wow.js" />
+        <Script src="/js/validation.js" />
+        <Script src="/js/jquery.fancybox.js" />
+        <Script src="/js/appear.js" />
+        <Script src="/js/scrollbar.js" />
         {/* nav-tool.js removed - conflicts with React cart sidebar */}
         {/* <Script src="/js/nav-tool.js" /> */}
         {/* main-js */}
-        <Script src="/js/script.js" strategy="beforeInteractive" />
+        <Script src="/js/script.js" />
       </body>
     </html>
   );
